@@ -1,0 +1,11 @@
+<html>
+      <head>
+          <title>Reservation</title>
+          <link href="Style.css" rel="stylesheet">
+      </head>
+
+      <body>
+      <h1>Ce texte est écrit à côté de l'image flottante.</h1>
+
+      </body>
+</html>
