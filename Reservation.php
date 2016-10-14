@@ -13,59 +13,39 @@
               que soit le nombre de voyageurs.
           </div><br>
 
-          <form method="Post">
+          <form method="Post" action="Button1.php">
             <table>
                 <tr>
                   <td>Destination</td>
-                  <td><input type="test" name="reponses[]" /><br></td>
+                  <td><input type="text" name="destination" id="destination"/><br></td>
                 </tr>
                 <tr>
                   <td>Nombre de places</td>
-                  <td><input type="test" name="reponses[]" /><br></td>
+                  <td><input type="text" name="nbr_places" id='nbr_places'/><br></td>
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>
-                  <td><input type="checkbox" name="reponses[]" /><br></td>
+                  <td><input type="checkbox" name="Assurance annulation" /><br></td>
                 </tr>
               </table>
 
-            <input type="submit" name="Envoyer" value="Etape suivante" onClick="Button1.php"/>
-            <input type="submit" name="Annuler la reservation" value="Annuler la reservation"/>
+            <input type="submit" name="send" value="Etape suivante"/>
+            <input type="submit" name="abort" value="Annuler la reservation"/>
 
-        </form>
-
-        <form method="Post">
-          <table>
-              <tr>
-                <td>Destination</td>
-                <td><input type="test" name="rep[]" /><br></td>
-              </tr>
-              <tr>
-                <td>Nombre de places</td>
-                <td><input type="test" name="rep[]" /><br></td>
-              </tr>
-              <tr>
-                <td>Assurance annulation</td>
-                <td><input type="checkbox" name="rep[]" /><br></td>
-              </tr>
-            </table>
-
-          <input type="submit" name="Envoyer" value="Etape suivante" onClick="Button1.php"/>
-          <input type="submit" name="Annuler la reservation" value="Annuler la reservation"/>
-
-      </form>
-
-         <?php
-
-           $listeReponses = $_POST['reponses'];
-           foreach ($listeReponses as $reponse)
-           {
-               echo $reponse . '<br>';
-           }
-           echo "La seconde reponse : ".$_POST['reponses'][1];
+          </form>
 
 
-         ?>
+         <!-- <?php
+
+          //  $listeReponses = $_POST['reponses'];
+          //  foreach ($listeReponses as $reponse)
+          //  {
+          //      echo $reponse . '<br>';
+          //  }
+          //  echo "La seconde reponse : ".$_POST['reponses'][1];
+
+
+         ?> -->
 
 
       </body>
