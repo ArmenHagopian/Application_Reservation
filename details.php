@@ -1,14 +1,17 @@
 <html>
 <head>
 <title> RESERVATION</title>
+<link href='Style.css' rel='stylesheet'>
+
 </head>
 <body>
 
 <?php
+
   $i=0;
   echo"<h1>DETAIL DES RESERVATIONS</h1>";
 
-  echo"<p> <form method='post' action='Button1.php'>";
+  echo"<p> <form method='post' action='previous.php'>";
 
       while($i < $_nbr_places)
         {
@@ -20,8 +23,8 @@
               </tr>
 
               <tr>
-                <td>Age</td>
-                <td><input type='text' name='Age' id='Age'/><br></td>
+                  <td>Age</td>
+                  <td><input type='text' name='Age' id='Age'/><br></td>
               </tr>
           </table>
             ";
@@ -29,8 +32,8 @@
         }
 
           echo"<br/><br/>
-          <input type='submit' value='Etape suivante'/ >
-          <input type='submit' value='Retour à la page précédente'/>
+          <input type='submit' value='Etape suivante'/>
+          <input type='submit' value='Retour à la page précédente' name='previous'/>
           <input type='submit' value='Annuler la reservation'/>
 
           </form>  </p>";
