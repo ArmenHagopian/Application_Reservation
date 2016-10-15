@@ -37,7 +37,14 @@
           <input type='submit' value='Annuler la reservation'/>
 
           </form>  </p>";
-
+    if(isset($_insurance))
+    {
+      echo $_SESSION['insurance_value'];
+    }
+    else
+    {
+      echo 'test';
+    }
 ?>
 </body>
 </html>

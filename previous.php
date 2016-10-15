@@ -29,7 +29,18 @@ session_start();
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>
-                  <td><input type='checkbox' name='Assurance annulation'/><br></td>
+                  <td><input type='checkbox' name='insurance'/><br></td>
+                  <!-- <?php
+                      if ($_SESSION['insurance2'] != '')
+                      {
+                        echo "<td><input type='checkbox' name='insurance' checked/><br></td>";
+                      }
+                      else
+                      {
+                        echo "<td><input type='checkbox' name='insurance'/><br></td>";
+                        $_SESSION['insurance2'] = '';
+                      }
+                  ?> -->
                 </tr>
               </table>
 
