@@ -19,3 +19,9 @@ body
 {
     background-color: #f2f2f2;
 }
+
+error
+{
+  font-size: 10px;
+  color: red;
+}

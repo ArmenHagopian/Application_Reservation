@@ -14,7 +14,7 @@ else
 
 }
 
-if(isset($_POST['nbr_places']) && isset($_POST["destination"]) && empty($_POST['abort']))
+if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["destination"]) && $_POST["destination"]!='' && empty($_POST['abort']))
 {
   $info->setDestination($_POST['destination']);
   $info->setNbr_places($_POST['nbr_places']);
@@ -23,6 +23,12 @@ if(isset($_POST['nbr_places']) && isset($_POST["destination"]) && empty($_POST['
   $_SESSION['nbr_places'] = $nbr_places;
   $_SESSION['destination'] = $destination;
   include 'details.php';
+}
+
+elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_POST['send']))
+{
+  $destinationerror = 'active';
+  include 'Reservation.php';
 }
 
 elseif(isset($_POST['abort']))

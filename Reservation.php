@@ -1,7 +1,3 @@
-<!-- <?php
-session_start();
-?> -->
-
 <html>
       <head>
           <title>Reservation</title>
@@ -21,12 +17,12 @@ session_start();
           <form method='Post' action='Buttons.php'>
             <table>
                 <tr>
-                  <td>Destination</td>
-                  <td><input type='text' name='destination' value='<?php if (isset($destination)) echo $destination?>'/><br></td>
+                  <td>Destination<br><?php if (isset($destinationerror)) echo '<error>*Veuillez entrer une destination</error>'?></td>
+                  <td><input type='text' name='destination' value='<?php if (isset($destination)) echo $destination?>' placeholder='Entrer la destination'/><br></td>
                 </tr>
                 <tr>
                   <td>Nombre de places</td>
-                  <td><input type='text' name='nbr_places' value='<?php if (isset($nbr_places)) echo $nbr_places?>'/><br></td>
+                  <td><input type='text' name='nbr_places' value='<?php if (isset($nbr_places)) echo $nbr_places?>' placeholder='Entrer le nombre de places'/><br></td>
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>
