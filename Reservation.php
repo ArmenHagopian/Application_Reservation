@@ -1,3 +1,7 @@
+<!-- <?php
+session_start();
+?> -->
+
 <html>
       <head>
           <title>Reservation</title>
@@ -5,6 +9,7 @@
       </head>
 
       <body>
+        <center>
 
           <h1>RESERVATION</h1>
 
@@ -17,11 +22,11 @@
             <table>
                 <tr>
                   <td>Destination</td>
-                  <td><input type='text' name='destination'/><br></td>
+                  <td><input type='text' name='destination' value='<?php if (isset($nbr_places)) echo $nbr_places?>'/><br></td>
                 </tr>
                 <tr>
                   <td>Nombre de places</td>
-                  <td><input type='text' name='nbr_places'/><br></td>
+                  <td><input type='text' name='nbr_places' value='<?php if (isset($destination)) echo $destination?>'/><br></td>
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>
@@ -35,5 +40,6 @@
             </div>
 
           </form>
+        </center>
       </body>
 </html>

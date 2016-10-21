@@ -9,11 +9,11 @@
 <?php
 
   $i=0;
-  echo"<h1>DETAIL DES RESERVATIONS</h1>";
+  echo"<center><h1>DETAIL DES RESERVATIONS</h1>";
 
-  echo"<p> <form method='post' action='previous.php'>";
+  echo"<p> <form method='post' action='Buttons.php'>";
 
-      while($i < $_nbr_places)
+      while($i < $nbr_places)
         {
           echo "<br>
           <table>
@@ -39,12 +39,13 @@
           </form>  </p>";
     if(isset($_insurance))
     {
-      echo $_SESSION['insurance_value'];
+      echo "Prix de l'assurance : ".$_SESSION['insurance_value'];
     }
     else
     {
-      echo 'test';
+      echo 'pas d\'assurance';
     }
 ?>
+</center>
 </body>
 </html>
