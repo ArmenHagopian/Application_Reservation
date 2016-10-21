@@ -9,7 +9,7 @@ session_start();
       </head>
 
       <body>
-
+        <center>
           <h1>RESERVATION</h1>
 
           <div>Le prix de la place est de 10 euros jusqu'à douze ans et ensuite de
@@ -50,5 +50,6 @@ session_start();
             </div>
 
           </form>
+        </center>
       </body>
 </html>

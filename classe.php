@@ -28,6 +28,10 @@ class Reservation
 
   public function getNbr_places()
   {
+    if ($this->nbr_places == 0)
+    {
+      return '';
+    }
     return $this->nbr_places;
   }
 
@@ -46,6 +50,10 @@ class Reservation
 
   public function getAge()
   {
+    if ($this->age == 0)
+    {
+      return '';
+    }
     return $this->age;
   }
   public function setAge($newage)
