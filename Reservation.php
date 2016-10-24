@@ -21,7 +21,7 @@
                   <td><input type='text' name='destination' value='<?php if (isset($destination)) echo $destination?>' placeholder='Entrer la destination'/><br></td>
                 </tr>
                 <tr>
-                  <td>Nombre de places</td>
+                  <td>Nombre de places<br><?php if (isset($placeserror)) echo '<error>*Veuillez entrer le nombre de places</error>'?></td>
                   <td><input type='text' name='nbr_places' value='<?php if (isset($nbr_places)) echo $nbr_places?>' placeholder='Entrer le nombre de places'/><br></td>
                 </tr>
                 <tr>
@@ -31,8 +31,8 @@
               </table>
 
             <div>
-              <input type='submit' name='send' value='Etape suivante'/>
-              <input type='submit' name='abort' value='Annuler la reservation'/>
+              <input type='submit' name='details' value='Etape suivante'/>
+              <input type='submit' name='cancel' value='Annuler la reservation'/>
             </div>
 
           </form>

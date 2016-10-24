@@ -25,3 +25,18 @@ error
   font-size: 10px;
   color: red;
 }
+
+/*input:link, input:visited {
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #580000;
+    width: 120px;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+
+input:hover, input:active {
+    background-color: #7A991A;
+}*/
