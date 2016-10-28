@@ -18,11 +18,11 @@
             <table>
                 <tr>
                   <td>Destination<br><?php if (isset($destinationerror)) echo '<error>*Veuillez entrer une destination</error>'?></td>
-                  <td><input type='text' name='destination' value='<?php if (isset($destination)) echo $destination?>' placeholder='Entrer la destination'/><br></td>
+                  <td><input type='text' name='destination' value='<?php if (isset($reservation)) echo $reservation->getDestination()?>' placeholder='Entrer la destination'/><br></td>
                 </tr>
                 <tr>
                   <td>Nombre de places<br><?php if (isset($placeserror)) echo '<error>*Veuillez entrer le nombre de places</error>'?></td>
-                  <td><input type='text' name='nbr_places' value='<?php if (isset($nbr_places)) echo $nbr_places?>' placeholder='Entrer le nombre de places'/><br></td>
+                  <td><input type='text' name='nbr_places' value='<?php if (isset($reservation)) echo $reservation->getNbr_places()?>' placeholder='Entrer le nombre de places'/><br></td>
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>

@@ -13,23 +13,23 @@
             <table>
                 <tr>
                   <td>Destination</td>
-                  <td><?php echo $destination; ?></td>
+                  <td><?php echo $info->getDestination(); ?></td>
                 </tr>
                 <tr>
                   <td>Nombre de places</td>
-                  <td><?php echo $nbr_places ?></td>
+                  <td><?php echo $info->getNbr_places(); ?></td>
                 </tr>
 
                 <?php
-                for ($i = 0; $i < $nbr_places; $i++)
+                for ($i = 0; $i < $info->getNbr_places(); $i++)
                 {
                   echo'<tr>
                          <td>Nom</td>
-                         <td>'.$names[$i].'</td>
+                         <td>'.$info->getName()[$i].'</td>
                        </tr>
                        <tr>
                          <td>Age</td>
-                         <td>'.$ages[$i].'</td>
+                         <td>'.$info->getAge()[$i].'</td>
                        </tr>';
                 }
                 ?>

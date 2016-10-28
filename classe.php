@@ -6,13 +6,13 @@ class Reservation
   private $name;
   private $age;
 
-  public function __construct($destination='', $nbr_places=0, $name='', $age=0)
+  public function __construct($destination='', $nbr_places=0)
   {
 
     $this->destination = $destination;
     $this->nbr_places = $nbr_places;
-    $this->name = $name;
-    $this->age = $age;
+    $this->name = [];
+    $this->age = [];
 
   }
 
@@ -50,10 +50,6 @@ class Reservation
 
   public function getAge()
   {
-    if ($this->age == 0)
-    {
-      return '';
-    }
     return $this->age;
   }
   public function setAge($newage)
