@@ -26,7 +26,8 @@
                     </tr>
                 </table>
                   ";
-              }          }
+              }
+            }
           else
           {
             for($i=0; $i < $reservation->getNbr_places(); $i++)

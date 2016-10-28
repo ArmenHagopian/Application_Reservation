@@ -5,6 +5,7 @@ class Reservation
   private $nbr_places;
   private $name;
   private $age;
+  private $destinationerror;
 
   public function __construct($destination='', $nbr_places=0)
   {
@@ -13,7 +14,8 @@ class Reservation
     $this->nbr_places = $nbr_places;
     $this->name = [];
     $this->age = [];
-
+    $this->destinationerror = "false";
+    $this->nbr_placeserror = "false";
   }
 
   public function getDestination()
@@ -55,6 +57,22 @@ class Reservation
   public function setAge($newage)
   {
     $this->age = $newage;
+  }
+  public function getDestinationError()
+  {
+    return $this->destinationerror;
+  }
+  public function setDestinationError($error)
+  {
+    $this->destinationerror = $error;
+  }
+  public function getNbr_placesError()
+  {
+    return $this->nbr_placeserror;
+  }
+  public function setNbr_placesError($error)
+  {
+    $this->nbr_placeserror = $error;
   }
 }
 ?>
