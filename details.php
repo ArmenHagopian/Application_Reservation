@@ -9,27 +9,27 @@
       <center><h1>DETAIL DES RESERVATIONS</h1>
         <p> <form method='post' action='Buttons.php'>
     <?php
-          if ($info->getName() != [] && $info->getAge() != [])
+          if ($reservation->getName() != [] && $reservation->getAge() != [])
           {
-            for($i=0; $i < $info->getNbr_places(); $i++)
+            for($i=0; $i < $reservation->getNbr_places(); $i++)
               {
                 echo "<br>
                 <table>
                     <tr>
                         <td>Nom</td>
-                        <td><input type='text' name='names[]' value='".$info->getName()[$i]."'/><br></td>
+                        <td><input type='text' name='names[]' value='".$reservation->getName()[$i]."'/><br></td>
                     </tr>
 
                     <tr>
                         <td>Age</td>
-                        <td><input type='text' name='ages[]' value='".$info->getAge()[$i]."'/><br></td>
+                        <td><input type='text' name='ages[]' value='".$reservation->getAge()[$i]."'/><br></td>
                     </tr>
                 </table>
                   ";
               }          }
           else
           {
-            for($i=0; $i < $info->getNbr_places(); $i++)
+            for($i=0; $i < $reservation->getNbr_places(); $i++)
               {
                 echo "<br>
                 <table>
