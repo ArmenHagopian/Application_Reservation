@@ -64,11 +64,12 @@ class Reservation
     {
       array_push($this->age, '');
     }
-    $i = 0;
-    while ($i < count($this->age) && (!is_numeric($this->age[$i]) || $this->age[$i] < 1))
+    for($i = 0; $i < count($this->age); $i++)
     {
-      $this->age[$i] = '';
-      $i++;
+      if (!is_numeric($this->age[$i]) || $this->age[$i] < 1)
+      {
+        $this->age[$i] = '';
+      }
     }
     return $this->age;
   }
