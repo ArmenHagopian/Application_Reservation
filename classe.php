@@ -32,7 +32,7 @@ class Reservation
 
   public function getNbr_places()
   {
-    if ($this->nbr_places == 0)
+    if ($this->nbr_places == 0 || $this->nbr_places < 1 || $this->nbr_places > 9)
     {
       return '';
     }
@@ -45,6 +45,11 @@ class Reservation
   }
   public function getName()
   {
+    //Add '' when the input is empty
+    while (count($this->name) < $this->nbr_places)
+    {
+      array_push($this->name, '');
+    }
     return $this->name;
   }
   public function setName($newname)
@@ -54,6 +59,17 @@ class Reservation
 
   public function getAge()
   {
+    //Add '' when the input is empty, < 1, or not a number
+    while (count($this->age) < $this->nbr_places)
+    {
+      array_push($this->age, '');
+    }
+    $i = 0;
+    while ($i < count($this->age) && (!is_numeric($this->age[$i]) || $this->age[$i] < 1))
+    {
+      $this->age[$i] = '';
+      $i++;
+    }
     return $this->age;
   }
   public function setAge($newage)

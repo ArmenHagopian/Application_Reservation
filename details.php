@@ -28,13 +28,14 @@
 
                     <tr>
                         <td>Age<br>";
-                //Display error if there is a '' in the list because it means the input is empty
-                if (isset($reservation) && $reservation->getAgeError() == 'true' && $reservation->getAge()[$i] == '')
+                $age = $reservation->getAge()[$i];
+                //Display error if age < 1 or if there is a '' in the list because it means the input is empty
+                if (isset($reservation) && (($reservation->getAgeError() == 'true' && $age == '') || ($reservation->getAgeError() == 'true' && (!is_numeric($age) || $age < 1))))
                 {
-                  echo "<error>*Veuillez entrer un age</error>";
+                  echo "<error>*Veuillez entrer un âge supérieur à 0</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='ages[]' value='".$reservation->getAge()[$i]."'/><br></td>
+                        <td><input type='text' name='ages[]' value='".$age."'/><br></td>
                     </tr>
                 </table>
                   ";
@@ -60,6 +61,7 @@
                     <tr>
                         <td>Age<br>";
                 //Display error if there is a '' in the list because it means the input is empty
+
                 if (isset($reservation) && $reservation->getAgeError() == 'true')
                 {
                   echo "<error>*Veuillez entrer un age</error>";
