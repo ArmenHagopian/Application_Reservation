@@ -11,17 +11,29 @@
     <?php
           if ($reservation->getName() != [] && $reservation->getAge() != [])
           {
+            // echo count($reservation->getAge());
+            // echo $reservation->getAge()[0];
             for($i=0; $i < $reservation->getNbr_places(); $i++)
               {
                 echo "<br>
                 <table>
                     <tr>
-                        <td>Nom</td>
+                        <td>Nom<br>";
+                if (isset($reservation) && $reservation->getNameError() == 'true' && $reservation->getName()[$i] == '')
+                {
+                  echo "<error>*Veuillez entrer un nom</error>";
+                }
+                echo "</td>
                         <td><input type='text' name='names[]' value='".$reservation->getName()[$i]."'/><br></td>
                     </tr>
 
                     <tr>
-                        <td>Age</td>
+                        <td>Age<br>";
+                if (isset($reservation) && $reservation->getAgeError() == 'true' && $reservation->getAge()[$i] == '')
+                {
+                  echo "<error>*Veuillez entrer un age</error>";
+                }
+                echo "</td>
                         <td><input type='text' name='ages[]' value='".$reservation->getAge()[$i]."'/><br></td>
                     </tr>
                 </table>
@@ -35,12 +47,22 @@
                 echo "<br>
                 <table>
                     <tr>
-                        <td>Nom</td>
+                        <td>Nom<br>";
+                if (isset($reservation) && $reservation->getNameError() == 'true')
+                {
+                  echo "<error>*Veuillez entrer un nom</error>";
+                }
+                echo "</td>
                         <td><input type='text' name='names[]'/><br></td>
                     </tr>
 
                     <tr>
-                        <td>Age</td>
+                        <td>Age<br>";
+                if (isset($reservation) && $reservation->getAgeError() == 'true')
+                {
+                  echo "<error>*Veuillez entrer un age</error>";
+                }
+                echo "</td>
                         <td><input type='text' name='ages[]'/><br></td>
                     </tr>
                 </table>

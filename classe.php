@@ -16,6 +16,8 @@ class Reservation
     $this->age = [];
     $this->destinationerror = "false";
     $this->nbr_placeserror = "false";
+    $this->name_error = "false";
+    $this->age_error = "false";
   }
 
   public function getDestination()
@@ -73,6 +75,24 @@ class Reservation
   public function setNbr_placesError($error)
   {
     $this->nbr_placeserror = $error;
+  }
+
+  public function getNameError()
+  {
+    return $this->name_error;
+  }
+  public function setNameError($error)
+  {
+    $this->name_error = $error;
+  }
+
+  public function getAgeError()
+  {
+    return $this->age_error;
+  }
+  public function setAgeError($error)
+  {
+    $this->age_error = $error;
   }
 }
 ?>
