@@ -11,14 +11,13 @@
     <?php
           if ($reservation->getName() != [] && $reservation->getAge() != [])
           {
-            // echo count($reservation->getAge());
-            // echo $reservation->getAge()[0];
             for($i=0; $i < $reservation->getNbr_places(); $i++)
               {
                 echo "<br>
                 <table>
                     <tr>
                         <td>Nom<br>";
+                //Display error if there is a '' in the list because it means the input is empty
                 if (isset($reservation) && $reservation->getNameError() == 'true' && $reservation->getName()[$i] == '')
                 {
                   echo "<error>*Veuillez entrer un nom</error>";
@@ -29,6 +28,7 @@
 
                     <tr>
                         <td>Age<br>";
+                //Display error if there is a '' in the list because it means the input is empty
                 if (isset($reservation) && $reservation->getAgeError() == 'true' && $reservation->getAge()[$i] == '')
                 {
                   echo "<error>*Veuillez entrer un age</error>";
@@ -48,6 +48,7 @@
                 <table>
                     <tr>
                         <td>Nom<br>";
+                //Display error if there is a '' in the list because it means the input is empty
                 if (isset($reservation) && $reservation->getNameError() == 'true')
                 {
                   echo "<error>*Veuillez entrer un nom</error>";
@@ -58,6 +59,7 @@
 
                     <tr>
                         <td>Age<br>";
+                //Display error if there is a '' in the list because it means the input is empty
                 if (isset($reservation) && $reservation->getAgeError() == 'true')
                 {
                   echo "<error>*Veuillez entrer un age</error>";

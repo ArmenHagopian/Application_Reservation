@@ -76,24 +76,6 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
 {
   $reservation->setName($_POST['names']);
   $reservation->setAge($_POST['ages']);
-  // $list2 = [];
-  // $list = $reservation->getName();
-  // //Check and remove if there is a '' in the list because it means the input is empty
-  // for($i = 0; $i < count($reservation->getName()); $i++)
-  // {
-  //   if ($reservation->getName()[$i] == '')
-  //   {
-  //     $list[$i] = '';
-  //     $list2 = $list;
-  //     // print_r($list2);
-  //   }
-  // }
-  // $reservation->setName($list2);
-  // print_r($reservation->getName());
-  // echo "<br>".count($reservation->getName());
-  // echo "<br>".$reservation->getNbr_places();
-  // if(count($reservation->getName()) < $reservation->getNbr_places())
-  // {
   $empty_inputs = 0;
   //If there is an empty input, stay in same page and go to next page
   //if not
@@ -120,7 +102,6 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
   else
   {
     $reservation->setAgeError('true');
-    // echo $reservation->getAgeError();
     $reservation->setNameError('true');
     include 'details.php';
   }
