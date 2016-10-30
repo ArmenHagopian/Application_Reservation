@@ -14,6 +14,15 @@ else
 
 if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["destination"]) && $_POST["destination"]!='' && empty($_POST['cancel']) && isset($_POST['details']))
 {
+  //Verify if user has checked the checkbox
+  if (isset($_POST['insurance']))
+  {
+    $reservation->setCheckbox('checked');
+  }
+  else
+  {
+    $reservation->setCheckbox('');
+  }
   $reservation->setDestination($_POST['destination']);
   $reservation->setNbr_places($_POST['nbr_places']);
   if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
@@ -33,6 +42,15 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
 //Check if the user has written something in inputs of nbr_places and destination when he clicks on next
 elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_POST['details']))
 {
+  //Verify if user has checked the checkbox
+  if (isset($_POST['insurance']))
+  {
+    $reservation->setCheckbox('checked');
+  }
+  else
+  {
+    $reservation->setCheckbox('');
+  }
   $reservation->setDestination('');
   $reservation->setNbr_places('');
   $reservation->setDestinationError('true');
@@ -43,6 +61,15 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
 //Check if the user has written something in input of destination when he clicks on next
 elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_POST['details']) && $_POST['details']!='')
 {
+  //Verify if user has checked the checkbox
+  if (isset($_POST['insurance']))
+  {
+    $reservation->setCheckbox('checked');
+  }
+  else
+  {
+    $reservation->setCheckbox('');
+  }
   if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
   {
     $reservation->setDestination('');
@@ -63,6 +90,15 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
 //Check if the user has written something in input of nbr_places when he clicks on next
 elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POST['details']) && $_POST['details']!='')
 {
+  //Verify if user has checked the checkbox
+  if (isset($_POST['insurance']))
+  {
+    $reservation->setCheckbox('checked');
+  }
+  else
+  {
+    $reservation->setCheckbox('');
+  }
   $reservation->setNbr_places('');
   $reservation->setDestination($_POST['destination']);
   $reservation->setDestinationError('false');

@@ -18,6 +18,7 @@ class Reservation
     $this->nbr_placeserror = "false";
     $this->name_error = "false";
     $this->age_error = "false";
+    $this->checkbox = '';
   }
 
   public function getDestination()
@@ -110,6 +111,21 @@ class Reservation
   public function setAgeError($error)
   {
     $this->age_error = $error;
+  }
+  public function getCheckbox()
+  {
+    return $this->checkbox;
+  }
+  public function setCheckbox($value)
+  {
+    if ($value == 'checked')
+    {
+      $this->checkbox = 'checked';
+    }
+    else
+    {
+      $this->checkbox = '';
+    }
   }
 }
 ?>
