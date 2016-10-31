@@ -4,16 +4,6 @@ h1
     font-size: 160%;
 }
 
-/*table
-{
-    border: 1px solid black;
-    border-radius: 8px;
-}*/
-/*body
-{
-    background-color: #f2f2f2;
-}*/
-
 div
 {
     border-radius: 5px;
@@ -52,11 +42,3 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #009000;
 }
-
-function avancement() {
-  var ava = document.getElementById("avancement");
-  var prc = document.getElementById("pourcentage");
-  prc.innerHTML = ava.value + "%";
-}
-
-avancement();
