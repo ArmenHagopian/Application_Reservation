@@ -17,25 +17,32 @@
                 <table>
                     <tr>
                         <td>Nom<br>";
-                //Display error if there is a '' in the list because it means the input is empty
-                if (isset($reservation) && $reservation->getNameError() == 'true' && $reservation->getName()[$i] == '')
+                //Display error if there is a '' in the list because it
+                //means the input is empty
+                if (isset($reservation) && $reservation->getNameError() ==
+                    'true' && $reservation->getName()[$i] == '')
                 {
                   echo "<error>*Veuillez entrer un nom</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='names[]' value='".$reservation->getName()[$i]."'/><br></td>
+                        <td><input type='text' name='names[]'
+                        value='".$reservation->getName()[$i]."'/><br></td>
                     </tr>
 
                     <tr>
                         <td>Age<br>";
                 $age = $reservation->getAge()[$i];
-                //Display error if age < 1 or if there is a '' in the list because it means the input is empty
-                if (isset($reservation) && (($reservation->getAgeError() == 'true' && $age == '') || ($reservation->getAgeError() == 'true' && (!is_numeric($age) || $age < 1))))
+                //Display error if age < 1 or if there is a '' in the
+                //list because it means the input is empty
+                if (isset($reservation) && (($reservation->getAgeError() ==
+                    'true' && $age == '') || ($reservation->getAgeError() ==
+                    'true' && (!is_numeric($age) || $age < 1))))
                 {
                   echo "<error>*Veuillez entrer un âge supérieur à 0</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='ages[]' value='".$age."'/><br></td>
+                        <td><input type='text' name='ages[]'
+                        value='".$age."'/><br></td>
                     </tr>
                 </table>
                   ";
@@ -49,8 +56,10 @@
                 <table>
                     <tr>
                         <td>Nom<br>";
-                //Display error if there is a '' in the list because it means the input is empty
-                if (isset($reservation) && $reservation->getNameError() == 'true')
+                //Display error if there is a '' in the list because
+                //it means the input is empty
+                if (isset($reservation) && $reservation->getNameError() ==
+                    'true')
                 {
                   echo "<error>*Veuillez entrer un nom</error>";
                 }
@@ -60,9 +69,11 @@
 
                     <tr>
                         <td>Age<br>";
-                //Display error if there is a '' in the list because it means the input is empty
+                //Display error if there is a '' in the list because
+                //it means the input is empty
 
-                if (isset($reservation) && $reservation->getAgeError() == 'true')
+                if (isset($reservation) &&
+                    $reservation->getAgeError() == 'true')
                 {
                   echo "<error>*Veuillez entrer un age</error>";
                 }
@@ -76,21 +87,24 @@
 
         ?>
               <br/><br/>
-              <input type='submit' value='Etape suivante' name='validation'/>
-              <input type='submit' value='Retour à la page précédente' name='backtofirst'/>
-              <input type='submit' value='Annuler la reservation' name='cancel'/>
+              <input type='submit' value='Etape suivante'
+                      name='validation'/>
+              <input type='submit' value='Retour à la page précédente'
+                      name='backtofirst'/>
+              <input type='submit' value='Annuler la reservation'
+                      name='cancel'/>
 
               </form></p></center>
 
-    <?php
-        if(isset($_insurance))
+    <!-- <?php
+        if(isset($reservation) && $reservation->getCheckbox() == 'checked')
         {
-          echo "Prix de l'assurance : ".$_SESSION['insurance_value'];
+          echo "Prix de l'assurance : ".'20';
         }
         else
         {
           echo 'pas d\'assurance';
         }
-    ?>
+    ?> -->
   </body>
 </html>

@@ -36,7 +36,9 @@
 
                 <tr>
                   <td>Assurance annulation</td>
-                  <td>OUI</td>
+                  <td><?php if(isset($reservation))
+                            echo $reservation->getInsurance() ?>
+                  </td>
                 </tr>
               </table>
 

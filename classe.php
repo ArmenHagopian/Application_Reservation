@@ -127,5 +127,42 @@ class Reservation
       $this->checkbox = '';
     }
   }
+  public function getInsurance()
+  {
+    if ($this->checkbox == 'checked')
+    {
+      return 'OUI';
+    }
+    else
+    {
+      return 'NON';
+    }
+  }
+
+  public function getPrice()
+  {
+    $price = 0;
+    foreach ($this->age as $age)
+    {
+      if (is_numeric($age) && $age < 13)
+      {
+        $price += 10;
+      }
+      elseif (is_numeric($age) && $age > 12)
+      {
+        $price += 15;
+      }
+    }
+    if ($this->checkbox == 'checked')
+    {
+      return $price + 20;
+    }
+    else
+    {
+      return $price;
+    }
+
+  }
+
 }
 ?>
