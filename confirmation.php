@@ -1,7 +1,7 @@
 <html>
       <head>
           <title>Reservation</title>
-          <link href='Style.css' rel='stylesheet'>
+          <link href='style.css' rel='stylesheet'>
       </head>
 
       <body>
@@ -14,7 +14,7 @@
             echo $reservation->getPrice() ?> euros sur le compte 000-000000-00
           </div><br>
 
-          <form method='Post' action='Buttons.php'>
+          <form method='Post' action='controller.php'>
             <div>
               <input type='submit' name='cancel' value="Retour à la page d'accueil"/>
             </div>

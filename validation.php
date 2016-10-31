@@ -1,7 +1,7 @@
 <html>
       <head>
           <title>Reservation</title>
-          <link href='Style.css' rel='stylesheet'>
+          <link href='style.css' rel='stylesheet'>
       </head>
 
       <body>
@@ -9,7 +9,7 @@
 
           <h1>VALIDATION DES RESERVATIONS</h1>
 
-          <form method='Post' action='Buttons.php'>
+          <form method='Post' action='controller.php'>
             <table>
                 <tr>
                   <td>Destination</td>

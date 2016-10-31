@@ -1,23 +1,13 @@
 
 h1
 {
-    font-size: 160%; /* Titres de 40 pixels */
-    /*margin-left: auto;*/
+    font-size: 160%;
 }
-div
-{
-    /*margin-left: auto;*/
-    /*line-height: 1.5;*/
-    /*border-radius: 8px;*/
 
-}
 table
 {
-
-    /*border-collapse: collapse;*/
     border: 1px solid black;
     border-radius: 8px;
-    /*margin-left: center;*/
 }
 body
 {
@@ -29,18 +19,3 @@ error
   font-size: 60%;
   color: red;
 }
-
-/*input:link, input:visited {
-    display: block;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #580000;
-    width: 120px;
-    text-align: center;
-    padding: 4px;
-    text-decoration: none;
-}
-
-input:hover, input:active {
-    background-color: #7A991A;
-}*/

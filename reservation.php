@@ -1,7 +1,7 @@
 <html>
       <head>
           <title>Reservation</title>
-          <link href='Style.css' rel='stylesheet'>
+          <link href='style.css' rel='stylesheet'>
       </head>
 
       <body>
@@ -14,7 +14,7 @@
               que soit le nombre de voyageurs.
           </div><br>
 
-          <form method='Post' action='Buttons.php'>
+          <form method='Post' action='controller.php'>
             <table>
                 <tr>
                   <td>Destination<br>

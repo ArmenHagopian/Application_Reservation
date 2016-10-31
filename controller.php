@@ -35,7 +35,7 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
   {
     $reservation->setDestinationError('false');
     $reservation->setNbr_placesError('true');
-    include 'Reservation.php';
+    include 'reservation.php';
   }
 }
 
@@ -55,7 +55,7 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   $reservation->setNbr_places('');
   $reservation->setDestinationError('true');
   $reservation->setNbr_placesError('true');
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 //Check if the user has written something in input of destination when he clicks on next
@@ -84,7 +84,7 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
     $reservation->setDestination($_POST['destination']);
     $reservation->setNbr_places($_POST['nbr_places']);
   }
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 //Check if the user has written something in input of nbr_places when he clicks on next
@@ -103,14 +103,14 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   $reservation->setDestination($_POST['destination']);
   $reservation->setDestinationError('false');
   $reservation->setNbr_placesError('true');
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 elseif(isset($_POST['cancel']))
 {
   session_destroy();
   unset($reservation);
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 elseif(isset($_POST['backtofirst']))
@@ -121,7 +121,7 @@ elseif(isset($_POST['backtofirst']))
   $reservation->setNameError('false');
   $reservation->setDestinationError('false');
   $reservation->setNbr_placesError('false');
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['validation']))
@@ -180,7 +180,7 @@ else
 {
   session_destroy();
   unset($reservation);
-  include 'Reservation.php';
+  include 'reservation.php';
 }
 
 if (isset($reservation))

@@ -1,13 +1,13 @@
 <html>
   <head>
     <title> RESERVATION</title>
-    <link href='Style.css' rel='stylesheet'>
+    <link href='style.css' rel='stylesheet'>
 
   </head>
 
   <body>
       <center><h1>DETAIL DES RESERVATIONS</h1>
-        <p> <form method='post' action='Buttons.php'>
+        <p> <form method='post' action='controller.php'>
     <?php
           if ($reservation->getName() != [] && $reservation->getAge() != [])
           {
