@@ -25,7 +25,7 @@
                   echo "<error>*Veuillez entrer un nom</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='names[]'
+                        <td><input type='text' name='names[]' maxlength='40'
                         value='".$reservation->getName()[$i]."'/><br></td>
                     </tr>
 
@@ -41,7 +41,7 @@
                   echo "<error>*Veuillez entrer un âge supérieur à 0</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='ages[]'
+                        <td><input type='text' name='ages[]' maxlength='3'
                         value='".$age."'/><br></td>
                     </tr>
                 </table>
@@ -64,7 +64,8 @@
                   echo "<error>*Veuillez entrer un nom</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='names[]'/><br></td>
+                        <td><input type='text' name='names[]'
+                                    maxlength='40'/><br></td>
                     </tr>
 
                     <tr>
@@ -78,7 +79,8 @@
                   echo "<error>*Veuillez entrer un age</error>";
                 }
                 echo "</td>
-                        <td><input type='text' name='ages[]'/><br></td>
+                        <td><input type='text' name='ages[]'
+                                    maxlength='3'/><br></td>
                     </tr>
                 </table>
                   ";
@@ -96,15 +98,5 @@
 
               </form></p></center>
 
-    <!-- <?php
-        if(isset($reservation) && $reservation->getCheckbox() == 'checked')
-        {
-          echo "Prix de l'assurance : ".'20';
-        }
-        else
-        {
-          echo 'pas d\'assurance';
-        }
-    ?> -->
   </body>
 </html>

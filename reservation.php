@@ -22,7 +22,7 @@
                     $reservation->getDestinationError() == 'true')
                     echo '<error>*Veuillez entrer une destination</error>'?>
                   </td>
-                  <td><input type='text' name='destination'
+                  <td><input type='text' name='destination' maxlength="40"
                     value='<?php if (isset($reservation))
                     echo $reservation->getDestination()?>'
                     placeholder='Entrer la destination'/><br></td>
@@ -37,7 +37,7 @@
                     echo '<error>*Veuillez entrer un nombre <br>
                     supérieur à 0 et inférieur à 10</error>'?>
                   </td>
-                  <td><input type='text' name='nbr_places'
+                  <td><input type='text' name='nbr_places' maxlength="2"
                     value='<?php if (isset($reservation))
                     echo $reservation->getNbr_places()?>'
                     placeholder='Entrer le nombre de places'/><br>
@@ -45,7 +45,9 @@
                 </tr>
                 <tr>
                   <td>Assurance annulation</td>
-                  <td><input type='checkbox' name='insurance' <?php if (isset($reservation)) echo $reservation->getCheckbox() ?>/><br></td>
+                  <td><input type='checkbox' name='insurance'
+                    <?php if (isset($reservation))
+                          echo $reservation->getCheckbox() ?>/><br></td>
                 </tr>
               </table>
 
