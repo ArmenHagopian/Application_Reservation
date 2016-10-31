@@ -7,6 +7,7 @@
 
   <body>
       <center><h1>DETAIL DES RESERVATIONS</h1>
+        <progress id="avancement" value="50" max="100"></progress>
         <div>
           <form method='post' action='controller.php'>
             <?php
@@ -44,7 +45,7 @@
                         }
                         echo "</td>
                                 <td><input type='text' name='ages[]' maxlength='3'
-                                value='".$age."' placeholder = 'Entrer l´age'/>
+                                value='".$age."' placeholder = 'Entrer l´âge'/>
                                 <br>
                               </td>
                             </tr>
@@ -87,7 +88,7 @@
                         echo "</td>
                                 <td><input type='text' name='ages[]'
                                             maxlength='3'
-                                            placeholder = 'Entrer l´age'/><br>
+                                            placeholder = 'Entrer l´âge'/><br>
                                 </td>
                             </tr>
                         </table>

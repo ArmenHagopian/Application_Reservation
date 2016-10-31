@@ -8,6 +8,8 @@
         <center>
 
           <h1>CONFIRMATION DES RESERVATIONS</h1>
+          <progress id="avancement" value="100" max="100"></progress>
+
           <div>
 
             Votre demande a bien été enregistrée.<br>Merci de bien

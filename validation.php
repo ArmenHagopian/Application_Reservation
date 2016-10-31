@@ -8,6 +8,7 @@
         <center>
 
           <h1>VALIDATION DES RESERVATIONS</h1>
+          <progress id="avancement" value="75" max="100"></progress>
           <div>
             <form method='Post' action='controller.php'>
               <table>

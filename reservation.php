@@ -8,7 +8,7 @@
         <center>
 
           <h1>RESERVATION</h1>
-
+          <progress id="avancement" value="25" max="100"></progress>
           <div>Le prix de la place est de 10 euros jusqu'à douze ans et ensuite de
             15 euros.<br>Le prix de l'assurance annulation est de 20 euros quel
               que soit le nombre de voyageurs.
