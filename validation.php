@@ -8,9 +8,9 @@
         <center>
 
           <h1>VALIDATION DES RESERVATIONS</h1>
-
-          <form method='Post' action='controller.php'>
-            <table>
+          <div>
+            <form method='Post' action='controller.php'>
+              <table>
                 <tr>
                   <td>Destination</td>
                   <td><?php echo $reservation->getDestination(); ?></td>
@@ -42,13 +42,11 @@
                 </tr>
               </table>
 
-            <div>
               <input type='submit' name='confirm' value='Confirmer'/>
               <input type='submit' name='backtodetails' value='Retour à la page précédente'/>
               <input type='submit' name='cancel' value='Annuler la reservation'/>
-            </div>
-
-          </form>
+            </form>
+          </div>
         </center>
       </body>
 </html>
