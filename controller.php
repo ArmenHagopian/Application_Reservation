@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'classe.php';
+include 'model.php';
 
 if (isset($_SESSION['Reservation']))
 {
