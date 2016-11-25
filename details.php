@@ -7,9 +7,9 @@
 
   <body>
       <center><h1>DETAIL DES RESERVATIONS</h1>
-        <progress id="avancement" value="50" max="100"></progress>
+        <progress id="avancement" value="33" max="100"></progress>
         <div>
-          <form method='post' action='controller.php'>
+          <form method='post' action='index.php'>
             <?php
                   if ($reservation->getName() != [] && $reservation->getAge() != [])
                   {

@@ -17,7 +17,7 @@
             echo $reservation->getPrice() ?> euros sur le compte 000-000000-00
             <br>
 
-            <form method='Post' action='controller.php'>
+            <form method='Post' action='index.php'>
               <input type='submit' name='cancel' value="Retour à la page d'accueil"/>
             </form>
           </div>

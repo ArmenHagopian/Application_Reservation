@@ -1,7 +1,10 @@
 <?php
-session_start();
+// session_start();
 include 'model.php';
-
+if (session_status() == PHP_SESSION_NONE)
+{
+    session_start();
+}
 if (isset($_SESSION['Reservation']))
 {
   $reservation = unserialize($_SESSION['Reservation']);
