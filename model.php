@@ -19,6 +19,10 @@ class Reservation
     $this->name_error = "false";
     $this->age_error = "false";
     $this->checkbox = '';
+    $this->name_errorslist = [];
+    $this->age_errorslist = [];
+    $this->destination_error_display = '';
+    $this->nbr_places_error_display = '';
   }
 
   public function getDestination()
@@ -164,5 +168,71 @@ class Reservation
 
   }
 
+
+  public function getNameErrorsList()
+  {
+    for($i = 0; $i < $this->nbr_places; $i++)
+    {
+      if ($this->name_error == 'true' && $this->name[$i] == '')
+      {
+          //Add '*Veuillez entrer un nom' when input is empty
+          $this->name_errorslist[$i] = '*Veuillez entrer <br> un nom';
+      }
+      else
+      {
+          $this->name_errorslist[$i] = '';
+      }
+    }
+    return $this->name_errorslist;
+  }
+
+  public function getAgeErrorsList()
+  {
+      for($i = 0; $i < $this->nbr_places; $i++)
+      {
+          //Display error if age < 1 or if there is a '' in the
+          //list because it means the input is empty
+          if ($this->age_error == 'true' &&
+              $this->age[$i] == '' || ($this->age_error ==
+              'true' && (!is_numeric($this->age[$i]) || $this->age[$i] < 1)))
+          {
+              $this->age_errorslist[$i] = "*Veuillez entrer un <br> âge supérieur à 0";
+          }
+          else
+          {
+              $this->age_errorslist[$i] = '';
+          }
+      }
+      return $this->age_errorslist;
+  }
+
+  public function getDestinationErrorDisplay()
+  {
+      if ($this->destinationerror == 'true')
+      {
+      $this->destination_error_display = '*Veuillez entrer une destination';
+      }
+      else
+      {
+          $this->destination_error_display = '';
+      }
+      return $this->destination_error_display;
+  }
+  public function getNbr_placesErrorDisplay()
+  {
+      if ($this->nbr_placeserror == 'true' &&
+      (!is_numeric($this->nbr_places) ||
+      $this->nbr_places < 1 ||
+      $this->nbr_places > 10))
+      {
+      $this->nbr_places_error_display = '*Veuillez entrer un nombre <br>
+      supérieur à 0 et inférieur à 10';
+      }
+      else
+      {
+          $this->nbr_places_error_display = '';
+      }
+      return $this->nbr_places_error_display;
+  }
 }
 ?>

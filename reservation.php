@@ -18,9 +18,8 @@
             <table>
                 <tr>
                   <td>Destination<br>
-                    <?php if (isset($reservation) &&
-                    $reservation->getDestinationError() == 'true')
-                    echo '<error>*Veuillez entrer une destination</error>'?>
+                    <?php if (isset($reservation))
+                    echo "<error>".$reservation->getDestinationErrorDisplay()."</error>"?>
                   </td>
                   <td><input type='text' name='destination' maxlength="40"
                     value='<?php if (isset($reservation))
@@ -29,13 +28,8 @@
                 </tr>
                 <tr>
                   <td>Nombre de places<br>
-                    <?php if (isset($reservation) &&
-                    $reservation->getNbr_placesError() == 'true' &&
-                    (!is_numeric($reservation->getNbr_places()) ||
-                    $reservation->getNbr_places() < 1 ||
-                    $reservation->getNbr_places() > 10))
-                    echo '<error>*Veuillez entrer un nombre <br>
-                    supérieur à 0 et inférieur à 10</error>'?>
+                    <?php if (isset($reservation))
+                    echo '<error>'.$reservation->getNbr_placesErrorDisplay().'</error>'?>
                   </td>
                   <td><input type='text' name='nbr_places' maxlength="2"
                     value='<?php if (isset($reservation))
