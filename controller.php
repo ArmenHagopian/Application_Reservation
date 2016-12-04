@@ -18,6 +18,7 @@ else
 if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["destination"]) && $_POST["destination"]!='' && empty($_POST['cancel']) && isset($_POST['details']))
 {
   //Verify if user has checked the checkbox
+  echo('test');
   if (isset($_POST['insurance']))
   {
     $reservation->setCheckbox('checked');
@@ -30,14 +31,14 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
   $reservation->setNbr_places($_POST['nbr_places']);
   if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
   {
-    $reservation->setDestination($_POST['destination']);
-    $reservation->setNbr_places($_POST['nbr_places']);
+    // $reservation->setDestination($_POST['destination']);
+    // $reservation->setNbr_places($_POST['nbr_places']);
     include 'details.php';
   }
   else
   {
-    $reservation->setDestinationError('false');
-    $reservation->setNbr_placesError('true');
+    // $reservation->setDestinationError('false');
+    // $reservation->setNbr_placesError('true');
     include 'reservation.php';
   }
 }
@@ -45,6 +46,8 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
 //Check if the user has written something in inputs of nbr_places and destination when he clicks on next
 elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_POST['details']))
 {
+  echo('test1');
+
   //Verify if user has checked the checkbox
   if (isset($_POST['insurance']))
   {
@@ -56,14 +59,16 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   }
   $reservation->setDestination('');
   $reservation->setNbr_places('');
-  $reservation->setDestinationError('true');
-  $reservation->setNbr_placesError('true');
+  // $reservation->setDestinationError('true');
+  // $reservation->setNbr_placesError('true');
   include 'reservation.php';
 }
 
 //Check if the user has written something in input of destination when he clicks on next
 elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_POST['details']) && $_POST['details']!='')
 {
+  echo('test2');
+
   //Verify if user has checked the checkbox
   if (isset($_POST['insurance']))
   {
@@ -73,20 +78,20 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
   {
     $reservation->setCheckbox('');
   }
-  if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
-  {
-    $reservation->setDestination('');
-    $reservation->setNbr_places($_POST['nbr_places']);
-    $reservation->setNbr_placesError('false');
-    $reservation->setDestinationError('true');
-  }
-  else
-  {
-    $reservation->setDestinationError('true');
-    $reservation->setNbr_placesError('true');
+  // if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
+  // {
+  //   $reservation->setDestination('');
+  //   $reservation->setNbr_places($_POST['nbr_places']);
+  //   $reservation->setNbr_placesError('false');
+  //   $reservation->setDestinationError('true');
+  // }
+  // else
+  // {
+  //   $reservation->setDestinationError('true');
+  //   $reservation->setNbr_placesError('true');
     $reservation->setDestination($_POST['destination']);
     $reservation->setNbr_places($_POST['nbr_places']);
-  }
+  // }
   include 'reservation.php';
 }
 
@@ -94,6 +99,7 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
 elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POST['details']) && $_POST['details']!='')
 {
   //Verify if user has checked the checkbox
+  echo "test3";
   if (isset($_POST['insurance']))
   {
     $reservation->setCheckbox('checked');
@@ -102,10 +108,10 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   {
     $reservation->setCheckbox('');
   }
-  $reservation->setNbr_places('');
+  $reservation->setNbr_places($_POST['nbr_places']);
   $reservation->setDestination($_POST['destination']);
-  $reservation->setDestinationError('false');
-  $reservation->setNbr_placesError('true');
+  // $reservation->setDestinationError('false');
+  // $reservation->setNbr_placesError('true');
   include 'reservation.php';
 }
 
@@ -120,10 +126,10 @@ elseif(isset($_POST['backtofirst']))
 {
   $reservation->setName($_POST['names']);
   $reservation->setAge($_POST['ages']);
-  $reservation->setAgeError('false');
-  $reservation->setNameError('false');
-  $reservation->setDestinationError('false');
-  $reservation->setNbr_placesError('false');
+  // $reservation->setAgeError('false');
+  // $reservation->setNameError('false');
+  // $reservation->setDestinationError('false');
+  // $reservation->setNbr_placesError('false');
   include 'reservation.php';
 }
 
@@ -155,8 +161,8 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
 
   else
   {
-    $reservation->setAgeError('true');
-    $reservation->setNameError('true');
+    // $reservation->setAgeError('true');
+    // $reservation->setNameError('true');
     include 'details.php';
   }
 }
@@ -164,7 +170,7 @@ elseif(isset($_POST['names']) && $_POST['names']!=[] && isset($_POST["ages"]) &&
 {
   $reservation->setAge($_POST['ages']);
   $reservation->setName($_POST['names']);
-  $reservation->setNameError('true');
+  // $reservation->setNameError('true');
 
   include 'validation.php';
 }
@@ -178,9 +184,17 @@ elseif(isset($_POST['backtodetails']))
 {
   include 'details.php';
 }
-
+elseif(isset($_POST['end']))
+{
+  include 'testBD.php';
+  // include 'controller_db';
+  session_destroy();
+  unset($reservation);
+  include 'reservation.php';
+}
 else
 {
+  echo "testtest";
   session_destroy();
   unset($reservation);
   include 'reservation.php';

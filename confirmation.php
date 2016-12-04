@@ -18,7 +18,7 @@
             <br>
 
             <form method='Post' action='index.php'>
-              <input type='submit' name='cancel' value="Retour à la page d'accueil"/>
+              <input type='submit' name='end' value="Retour à la page d'accueil"/>
             </form>
           </div>
         </center>

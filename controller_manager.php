@@ -50,10 +50,11 @@ while ($line = $result->fetch_array(MYSQLI_ASSOC))
 }
 
 // Insertion d'un enregistrement
-$sql = "INSERT INTO `test`.`users` (`id`, `lastname`, `firstname`, `email`, `Mobile`) VALUES (NULL, 'Doe ', 'John', 'j.doe@ecam.be', '0478/65.32.89');";
+$sql = "INSERT INTO "test"."users" ("id", "lastname", "firstname", "email", "Mobile") VALUES (NULL, 'Doe ', 'John', 'j.doe@ecam.be', '0478/65.32.89');";
 if ($mysqli->query($sql) === TRUE)
 {
-    echo "Record updated successfully"; $id_insert = $mysqli->insert_id;
+    echo "Record updated successfully";
+    $id_insert = $mysqli->insert_id;
 }
 else
 {

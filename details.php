@@ -11,13 +11,15 @@
         <div>
           <form method='post' action='index.php'>
             <?php
+                  $nameerror = $reservation->getNameErrorsList();
+                  $ageerror = $reservation->getAgeErrorsList();
                   for($i=0; $i < $reservation->getNbr_places(); $i++)
                     {
                       echo "<br>
                       <table>
                           <tr>
                               <td>Nom<br>
-                              <error>".$reservation->getNameErrorsList()[$i]."</error>
+                              <error>".$nameerror[$i]."</error>
                               </td>
                               <td><input type='text' name='names[]' maxlength='40'
                               value='".$reservation->getName()[$i]."'
@@ -26,7 +28,7 @@
 
                           <tr>
                               <td>Age<br>
-                              <error>".$reservation->getAgeErrorsList()[$i]."</error>
+                              <error>".$ageerror[$i]."</error>
                               </td>
                               <td><input type='text' name='ages[]' maxlength='3'
                               value='".$reservation->getAge()[$i]."' placeholder = 'Entrer l´âge'/>
