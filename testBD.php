@@ -59,7 +59,7 @@ catch(PDOException $e)
   echo $e->getMessage();//Remove or change message in production code
 }
 
-$sql =  'SELECT names, id, ages FROM reserv';
+$sql =  'SELECT * FROM reserva';
         // print $row['names'] . "\t";
         // print  $row['id'] . "\t";
         // print $row['destination'] . "<br>";
@@ -98,28 +98,40 @@ tr:nth-child(even) {
 </head>
 <body>
 <center>
+<div>
+          <form method='Post' action='controller_manager.php'>
 <table>
-  <tr>
-    <th>Id</th>
-    <th>Names</th>
-    <th>Ages</th>
-    <th></th>
-    <th></th>
-
-  </tr>
+  <tr>";
+  $result = $db->query('SELECT * FROM reserva');
+  $fields = array_keys($result->fetch(PDO::FETCH_ASSOC));
+  foreach ($fields as $column)
+  {
+    echo "<th>".$column."</th>";
+  }
+  echo
+  "
+  <th></th>
+  <th></th>
   ";
-  foreach  ($db->query($sql) as $row) {
+  $nbr_rows = 0;
+  foreach  ($result as $row) {
+    $nbr_rows += 1;
+    echo "<tr>";
+  foreach ($fields as $column) {
 
-
-    echo"<tr><td>".$row['id']."</td>
-    <td>".$row['names']."</td>
-    <td>".$row['ages']."</td>
-    <td><a href='reservation.php'>Modif</a></td>
-    <td><a href='reservation.php'>Supprimer</a></td></tr>";
+    echo"
+    <td>".$row[$column]."</td>";}
+    echo
+    "
+    <td><input type='submit' name='Modify_".$row['Id']."' value='Modifier'/></td>
+    <td><input type='submit' name='Delete_".$row['Id']."' value='Supprimer'/></td></tr>";
 }
+
   echo "
 
 </table>
+</form>
+</div>
 </center>
 </body>
 </html>";

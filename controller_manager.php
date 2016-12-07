@@ -1,77 +1,68 @@
 <?php
+// session_start();
+// include 'model_db.php';
+include 'model.php';
 
-$mysqli = new mysqli("localhost", "root", "", "reservation") or die("Could not select database");
-if ($mysqli->connect_errno)
+$hostname = 'localhost';
+$database = 'testReservation';
+$username = 'root';
+$password = '';
+try
 {
-  echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
-}
+$db = new PDO("mysql:host=$hostname;dbname=$database",$username,$password);
+$table = 'reserva';
+$result = $db->query('SELECT * FROM reserva');
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Execute SQL requests
-$query = "SELECT * FROM users";
-$result = $mysqli->query($query) or die("Query failed");
+// $sql = "DELETE FROM 'reserva' WHERE 'id' = :id_to_delete";
+// $query = $db->prepare( $sql );
 
-if ($result->num_rows == 0)
+
+// !!!!!!!! aller chercher $nbr_rows dans le model !!!!!!!!!!!!
+$nbr_rows = 10;
+for ($i = 1; $i <= 10; $i++)
 {
-    echo "Auncune ligne trouvée, rien à afficher.";
-    exit;
-}
+    $modif = "Modify_".$i;
+    $delete = "Delete_".$i;
 
-// Display results
-
-
-// Results released
-$result->close();
-
-// Close the connection
-$mysqli->close();
-
-// Affichage des entêtes de colonnes
-echo "<table>\n<tr>";
-while ($finfo = $result->fetch_field())
-{
-    echo '<th>'. $finfo->name .'</th>';
-}
-echo "</tr>\n";
-// Afficher des résultats en HTML
-while ($line = $result->fetch_assoc())
-{
-    echo "\t<tr>\n";
-    foreach ($line as $col_value)
+    if(isset($_POST[$modif]))
     {
-        echo "\t\t<td>$col_value</td>\n"; }
-        echo "\t</tr>\n";
+      // unset($_SESSION['Reservation']);
+// var_dump($reservation);
+
+        $reservation = new Reservation();
+$_SESSION['Reservation'] = $reservation;
+        $sql = "SELECT Destination, Places, Assurance, Noms, Ages, Prix FROM reserva";
+        $result = $db->query($sql);
+        foreach  ($result as $row)
+        {
+          $reservation->setDestination($row["Destination"]);
+          $reservation->setNbr_places($row["Places"]);
+          if ($row["Assurance"] == "OUI") {
+            $reservation->setCheckbox("checked");
+          }
+          else {
+            $reservation->setCheckbox("");
+          }
+
+          $reservation->setName(explode(",", $row["Noms"]));
+          $reservation->setAge(explode(",", $row["Ages"]));
+
+        }
+        include 'index.php';
     }
-    echo "</table>\n";
-// Récupération du résultat sous forme d'un tableau associatif
-$result = $mysqli->query($query) or die("Query failed");
-while ($line = $result->fetch_array(MYSQLI_ASSOC))
-{
-    echo $line['lastname'].'<BR>';
-}
+    elseif (isset($_POST[$delete]))
+    {
+        $id_to_delete = $i;
+        $sql = "DELETE FROM reserva WHERE Id=$i";
+        $db->query($sql);
+        include "testBD.php";
+    }
 
-// Insertion d'un enregistrement
-$sql = "INSERT INTO "test"."users" ("id", "lastname", "firstname", "email", "Mobile") VALUES (NULL, 'Doe ', 'John', 'j.doe@ecam.be', '0478/65.32.89');";
-if ($mysqli->query($sql) === TRUE)
-{
-    echo "Record updated successfully";
-    $id_insert = $mysqli->insert_id;
 }
-else
-{
-    echo "Error inserting record: " . $mysqli->error;
 }
-// Récupération de l'id de la dernière insertion
-$id_user = $mysqli->insert_id;
-
-// Mise à jour d'un enregistrement
-$sql = "UPDATE users SET lastname='Dardenne' WHERE id=2";
-if ($mysqli->query($sql) === TRUE)
+catch(PDOException $e)
 {
-    echo "Record inserted successfully";
+  echo $e->getMessage();//Remove or change message in production code
 }
-else
-{
-    echo "Error updating record: " . $mysqli->error;
-}
-
 ?>
