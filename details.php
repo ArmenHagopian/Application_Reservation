@@ -11,8 +11,8 @@
         <div>
           <form method='post' action='index.php'>
             <?php
-                  $nameerror = $reservation->getNameErrorsList();
-                  $ageerror = $reservation->getAgeErrorsList();
+                  $nameerror = $reservation->getNameErrors();
+                  $ageerror = $reservation->getAgeErrors();
                   for($i=0; $i < $reservation->getNbr_places(); $i++)
                     {
                       echo "<br>

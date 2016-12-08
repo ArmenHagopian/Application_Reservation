@@ -1,6 +1,6 @@
 <?php
 // session_start();
-include 'model.php';
+include_once 'model.php';
 if (session_status() == PHP_SESSION_NONE)
 {
     session_start();
@@ -15,7 +15,7 @@ else
   $reservation = new Reservation();
 }
 
-if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["destination"]) && $_POST["destination"]!='' && empty($_POST['cancel']) && isset($_POST['details']))
+if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["destination"]) && $_POST["destination"]!='' && isset($_POST['details']))
 {
   //Verify if user has checked the checkbox
   echo('test');
@@ -33,6 +33,8 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
   {
     // $reservation->setDestination($_POST['destination']);
     // $reservation->setNbr_places($_POST['nbr_places']);
+    // $reservation->setNameErrorsList([]);
+    $reservation->setComeback('true');
     include 'details.php';
   }
   else
@@ -163,6 +165,7 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
   {
     // $reservation->setAgeError('true');
     // $reservation->setNameError('true');
+    $reservation->setComeback('false');
     include 'details.php';
   }
 }
@@ -186,11 +189,33 @@ elseif(isset($_POST['backtodetails']))
 }
 elseif(isset($_POST['end']))
 {
-  include 'testBD.php';
   // include 'controller_db';
+  include_once 'model_db.php';
+  if(!isset($db))
+  {
+      $db = new Database();
+      $hostname = 'localhost';
+      $database = 'testReservation';
+      $username = 'root';
+      $password = '';
+      $db->connect($hostname, $database, $username, $password);
+      $table = 'reserva';
+      $db->table($table);
+  }
+
+  $db->updateOrAdd($reservation);
   session_destroy();
   unset($reservation);
   include 'reservation.php';
+}
+// Manager wants to modify a reservation
+elseif (isset($_SESSION['Modification']))
+{
+
+      $modification = unserialize($_SESSION['Modification']);
+      unset($modification);
+      unset($_SESSION['Modification']);
+      include 'reservation.php';
 }
 else
 {

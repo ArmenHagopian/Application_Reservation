@@ -44,14 +44,39 @@ try
     $req = $db->prepare('INSERT INTO reserva (Id, Noms, Destination, Ages, Places, Prix, Assurance) VALUES (NULL, :names, :destination, :ages, :places, :prix, :assurance)');
     if (isset($reservation))
     {
-        $req->execute(array(
-          'names' =>implode( ",",$reservation->getName()),
-          'destination' =>$reservation->getDestination(),
-          'ages' => implode( ",",$reservation->getAge()),
-          'places' => $reservation->getNbr_places(),
-          'prix' =>$reservation->getPrice(),
-          'assurance' => $reservation->getInsurance()
-        ));
+            if ($reservation->id != 0)
+            {
+echo "string";
+              $sql = "UPDATE reserva SET Noms = :names,
+                          Destination = :destination,
+                          Ages = :ages,
+                          Places = :places,
+                          Assurance = :insurance,
+                          Prix = :price
+                          WHERE Id = $reservation->id";
+              // Prepare statement
+
+              $stmt = $db->prepare($sql);
+              $stmt->bindParam(':names', implode( ",",$reservation->getName()), PDO::PARAM_STR);
+              $stmt->bindParam(':destination', $reservation->getDestination(), PDO::PARAM_STR);
+              $stmt->bindParam(':ages', implode( ",",$reservation->getAge()), PDO::PARAM_STR);
+              $stmt->bindParam(':places', $reservation->getNbr_places(), PDO::PARAM_STR);
+              $stmt->bindParam(':insurance', $reservation->getInsurance(), PDO::PARAM_STR);
+              $stmt->bindParam(':price', $reservation->getPrice(), PDO::PARAM_INT);
+              // execute the query
+              $stmt->execute();
+            }
+            else
+            {
+            $req->execute(array(
+              'names' =>implode( ",",$reservation->getName()),
+              'destination' =>$reservation->getDestination(),
+              'ages' => implode( ",",$reservation->getAge()),
+              'places' => $reservation->getNbr_places(),
+              'prix' =>$reservation->getPrice(),
+              'assurance' => $reservation->getInsurance()
+            ));
+            }
     }
 }
 catch(PDOException $e)
@@ -79,16 +104,36 @@ $sql =  'SELECT * FROM reserva';
 <html>
 <head>
 <style>
+input[type=submit] {
+    width: 100%;
+    background-color: #4099FF;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /*box-shadow: 0 3px #999;*/
+
+}
+
+input[type=submit]:hover {
+    background-color: #3B5998;
+}
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 60%;
+  border: 1px solid black;
+  border-collapse: separate;
+  border-radius: 5px;
+  border-spacing: 0px;
+  font-family: arial, sans-serif;
+
 }
 
 td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+  border: 0.5px solid black;
+
+    text-align: middle;
+    padding: 3px;
 }
 
 tr:nth-child(even) {

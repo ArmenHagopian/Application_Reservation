@@ -1,6 +1,9 @@
 <?php
 // phpinfo()
-session_start();
+if (session_status() == PHP_SESSION_NONE)
+{
+    session_start();
+}
 // quand met l'url http://localhost/Labo2/index.php?name=x
 if (!empty($_GET["name"]))
 {

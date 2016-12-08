@@ -19,7 +19,7 @@
                 <tr>
                   <td>Destination<br>
                     <?php if (isset($reservation))
-                    echo "<error>".$reservation->getDestinationErrorDisplay()."</error>"?>
+                    echo "<error>".$reservation->getDestinationError()."</error>"?>
                   </td>
                   <td><input type='text' name='destination' maxlength="40"
                     value='<?php if (isset($reservation))
@@ -29,7 +29,7 @@
                 <tr>
                   <td>Nombre de places<br>
                     <?php if (isset($reservation))
-                    echo '<error>'.$reservation->getNbr_placesErrorDisplay().'</error>'?>
+                    echo '<error>'.$reservation->getNbr_placesError().'</error>'?>
                   </td>
                   <td><input type='text' name='nbr_places' maxlength="2"
                     value='<?php if (isset($reservation))

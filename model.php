@@ -9,22 +9,31 @@ class Reservation
 
   public function __construct($destination='', $nbr_places=0)
   {
-
+    $this->id = 0;
     $this->destination = $destination;
     $this->nbr_places = $nbr_places;
     $this->name = [];
     $this->age = [];
-    $this->destinationerror = "false";
-    $this->nbr_placeserror = "false";
-    $this->name_error = "false";
-    $this->age_error = "false";
+    // $this->destinationerror = "false";
+    // $this->nbr_placeserror = "false";
+    // $this->name_error = "false";
+    // $this->age_error = "false";
     $this->checkbox = '';
     $this->name_errorslist = [];
     $this->age_errorslist = [];
     $this->destination_error_display = '';
     $this->nbr_places_error_display = '';
+    $this->comeback = "false";
   }
 
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function setId($newid)
+  {
+    $this->id = $newid;
+  }
   public function getDestination()
   {
     return $this->destination;
@@ -82,40 +91,40 @@ class Reservation
   {
     $this->age = $newage;
   }
-  public function getDestinationError()
-  {
-    return $this->destinationerror;
-  }
-  public function setDestinationError($error)
-  {
-    $this->destinationerror = $error;
-  }
-  public function getNbr_placesError()
-  {
-    return $this->nbr_placeserror;
-  }
-  public function setNbr_placesError($error)
-  {
-    $this->nbr_placeserror = $error;
-  }
-
-  public function getNameError()
-  {
-    return $this->name_error;
-  }
-  public function setNameError($error)
-  {
-    $this->name_error = $error;
-  }
-
-  public function getAgeError()
-  {
-    return $this->age_error;
-  }
-  public function setAgeError($error)
-  {
-    $this->age_error = $error;
-  }
+  // public function getDestinationError()
+  // {
+  //   return $this->destinationerror;
+  // }
+  // public function setDestinationError($error)
+  // {
+  //   $this->destinationerror = $error;
+  // }
+  // public function getNbr_placesError()
+  // {
+  //   return $this->nbr_placeserror;
+  // }
+  // public function setNbr_placesError($error)
+  // {
+  //   $this->nbr_placeserror = $error;
+  // }
+  //
+  // public function getNameError()
+  // {
+  //   return $this->name_error;
+  // }
+  // public function setNameError($error)
+  // {
+  //   $this->name_error = $error;
+  // }
+  //
+  // public function getAgeError()
+  // {
+  //   return $this->age_error;
+  // }
+  // public function setAgeError($error)
+  // {
+  //   $this->age_error = $error;
+  // }
   public function getCheckbox()
   {
     return $this->checkbox;
@@ -168,9 +177,27 @@ class Reservation
 
   }
 
-
-  public function getNameErrorsList()
+  // Allows to know if the user is coming back to a page so
+  // we don't display errors
+  public function setComeback($come)
   {
+      $this->comeback = $come;
+  }
+
+  public function getNameErrors()
+  {
+    if ($this->comeback == 'true')
+    {
+
+      for($i = 0; $i < $this->nbr_places; $i++)
+      {
+
+              $this->name_errorslist[$i] = "";
+
+      }
+      return $this->name_errorslist;
+
+    }
     if ($this->name != [])
     {
 
@@ -197,8 +224,22 @@ class Reservation
     return $this->name_errorslist;
   }
 
-  public function getAgeErrorsList()
+
+  public function getAgeErrors()
   {
+      if ($this->comeback == 'true')
+      {
+
+        for($i = 0; $i < $this->nbr_places; $i++)
+        {
+
+                $this->age_errorslist[$i] = "";
+
+        }
+        return $this->age_errorslist;
+
+      }
+
       if ($this->age != [])
       {
 
@@ -227,7 +268,7 @@ class Reservation
       return $this->age_errorslist;
   }
 
-  public function getDestinationErrorDisplay()
+  public function getDestinationError()
   {
       if ($this->destination == '' )
       {
@@ -239,7 +280,7 @@ class Reservation
       }
       return $this->destination_error_display;
   }
-  public function getNbr_placesErrorDisplay()
+  public function getNbr_placesError()
   {
       if (
       (!is_numeric($this->nbr_places) ||
