@@ -1,6 +1,8 @@
 <?php
 // session_start();
-include_once 'model.php';
+$a = $_SERVER['PHP_SELF'];
+echo $a;
+include_once 'models/model.php';
 if (session_status() == PHP_SESSION_NONE)
 {
     session_start();
@@ -35,13 +37,14 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
     // $reservation->setNbr_places($_POST['nbr_places']);
     // $reservation->setNameErrorsList([]);
     $reservation->setComeback('true');
-    include 'details.php';
+    include 'views/details.php';
   }
   else
   {
     // $reservation->setDestinationError('false');
     // $reservation->setNbr_placesError('true');
-    include 'reservation.php';
+    $reservation->setComeback('false');
+    include 'views/reservation.php';
   }
 }
 
@@ -63,7 +66,8 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   $reservation->setNbr_places('');
   // $reservation->setDestinationError('true');
   // $reservation->setNbr_placesError('true');
-  include 'reservation.php';
+  $reservation->setComeback('false');
+  include 'views/reservation.php';
 }
 
 //Check if the user has written something in input of destination when he clicks on next
@@ -94,7 +98,8 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
     $reservation->setDestination($_POST['destination']);
     $reservation->setNbr_places($_POST['nbr_places']);
   // }
-  include 'reservation.php';
+  $reservation->setComeback('false');
+  include 'views/reservation.php';
 }
 
 //Check if the user has written something in input of nbr_places when he clicks on next
@@ -114,14 +119,15 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   $reservation->setDestination($_POST['destination']);
   // $reservation->setDestinationError('false');
   // $reservation->setNbr_placesError('true');
-  include 'reservation.php';
+  $reservation->setComeback('false');
+  include 'views/reservation.php';
 }
 
 elseif(isset($_POST['cancel']))
 {
   session_destroy();
   unset($reservation);
-  include 'reservation.php';
+  include 'views/reservation.php';
 }
 
 elseif(isset($_POST['backtofirst']))
@@ -132,7 +138,7 @@ elseif(isset($_POST['backtofirst']))
   // $reservation->setNameError('false');
   // $reservation->setDestinationError('false');
   // $reservation->setNbr_placesError('false');
-  include 'reservation.php';
+  include 'views/reservation.php';
 }
 
 elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['validation']))
@@ -158,7 +164,7 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
   }
   if ($empty_inputs == 0)
   {
-    include 'validation.php';
+    include 'views/validation.php';
   }
 
   else
@@ -166,7 +172,7 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
     // $reservation->setAgeError('true');
     // $reservation->setNameError('true');
     $reservation->setComeback('false');
-    include 'details.php';
+    include 'views/details.php';
   }
 }
 elseif(isset($_POST['names']) && $_POST['names']!=[] && isset($_POST["ages"]) && $_POST["ages"]!=[] && empty($_POST['cancel']) && isset($_POST['validation']))
@@ -175,22 +181,12 @@ elseif(isset($_POST['names']) && $_POST['names']!=[] && isset($_POST["ages"]) &&
   $reservation->setName($_POST['names']);
   // $reservation->setNameError('true');
 
-  include 'validation.php';
+  include 'views/validation.php';
 }
 
 elseif(empty($_POST['cancel']) && isset($_POST['confirm']))
 {
-  include 'confirmation.php';
-}
-
-elseif(isset($_POST['backtodetails']))
-{
-  include 'details.php';
-}
-elseif(isset($_POST['end']))
-{
-  // include 'controller_db';
-  include_once 'model_db.php';
+  include_once 'models/model_db.php';
   if(!isset($db))
   {
       $db = new Database();
@@ -206,7 +202,18 @@ elseif(isset($_POST['end']))
   $db->updateOrAdd($reservation);
   session_destroy();
   unset($reservation);
-  include 'reservation.php';
+  include 'views/confirmation.php';
+}
+
+elseif(isset($_POST['backtodetails']))
+{
+  include 'views/details.php';
+}
+elseif(isset($_POST['end']))
+{
+  session_destroy();
+  unset($reservation);
+  include 'views/reservation.php';
 }
 // Manager wants to modify a reservation
 elseif (isset($_SESSION['Modification']))
@@ -215,14 +222,15 @@ elseif (isset($_SESSION['Modification']))
       $modification = unserialize($_SESSION['Modification']);
       unset($modification);
       unset($_SESSION['Modification']);
-      include 'reservation.php';
+      $reservation->setComeback('true');
+      include 'views/reservation.php';
 }
 else
 {
   echo "testtest";
   session_destroy();
   unset($reservation);
-  include 'reservation.php';
+  include 'views/reservation.php';
 }
 
 if (isset($reservation))

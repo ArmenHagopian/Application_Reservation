@@ -1,6 +1,10 @@
 <?php
-include_once 'model.php';
-include 'model_db.php';
+// echo $_SERVER['PHP_SELF'];
+$a = "<br>test2 : ".dirname($_SERVER['PHP_SELF']);
+echo $a;
+echo "je retesteteste";
+include_once 'models/model.php';
+include_once 'models/model_db.php';
 if (session_status() == PHP_SESSION_NONE)
 {
     session_start();
@@ -69,26 +73,27 @@ for ($i = 1; $i <= 30; $i++)
               $reservation->setName(explode(",", $row["Noms"]));
               $reservation->setAge(explode(",", $row["Ages"]));
               $reservation->setId($row["Id"]);
+              $reservation->setComeback('false');
           }
         }
         $_SESSION['Reservation'] = serialize($reservation);
         $a = "true";
 $_SESSION['Modification'] = serialize($a);
         // echo var_dump($reservation->getDestination());
-        include 'index.php';
+        include 'controllers/controller.php';
     }
     elseif (isset($_POST[$delete]))
     {
         $found_button = 'true';
         $id_to_delete = $i;
         $db->delete_reservation($id_to_delete);
-        include "manager.php";
+        include "views/manager.php";
     }
 }
 
 if ($found_button == 'false')
 {
-    include "manager.php";
+    include "views/manager.php";
 }
 // }
 // catch(PDOException $e)

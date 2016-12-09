@@ -41,7 +41,7 @@ background-color: #dddddd;
 <body>
 <center>
 <div>
-<form method='Post' action='controller_manager.php'>
+<form method='Post' action='index.php?name=manager'>
 <table>
 <tr>
 <?php

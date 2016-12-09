@@ -1,7 +1,7 @@
 <html>
       <head>
           <title>Reservation</title>
-          <link href='style.css' rel='stylesheet'>
+          <link href='views/static/style.css' rel='stylesheet'>
       </head>
 
       <body>

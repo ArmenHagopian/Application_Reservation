@@ -270,6 +270,11 @@ class Reservation
 
   public function getDestinationError()
   {
+      if ($this->comeback == 'true')
+      {
+          $this->destination_error_display = '';
+          return $this->destination_error_display;
+      }
       if ($this->destination == '' )
       {
       $this->destination_error_display = '*Veuillez entrer une destination';
@@ -282,6 +287,11 @@ class Reservation
   }
   public function getNbr_placesError()
   {
+      if ($this->comeback == 'true')
+      {
+          $this->nbr_places_error_display = '';
+          return $this->nbr_places_error_display;
+      }
       if (
       (!is_numeric($this->nbr_places) ||
       $this->nbr_places < 1 ||
