@@ -1,7 +1,4 @@
 <?php
-// session_start();
-$a = $_SERVER['PHP_SELF'];
-echo $a;
 include_once 'models/model.php';
 if (session_status() == PHP_SESSION_NONE)
 {
@@ -33,16 +30,11 @@ if(isset($_POST['nbr_places']) && $_POST['nbr_places']!='' && isset($_POST["dest
   $reservation->setNbr_places($_POST['nbr_places']);
   if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
   {
-    // $reservation->setDestination($_POST['destination']);
-    // $reservation->setNbr_places($_POST['nbr_places']);
-    // $reservation->setNameErrorsList([]);
     $reservation->setComeback('true');
     include 'views/details.php';
   }
   else
   {
-    // $reservation->setDestinationError('false');
-    // $reservation->setNbr_placesError('true');
     $reservation->setComeback('false');
     include 'views/reservation.php';
   }
@@ -64,8 +56,6 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   }
   $reservation->setDestination('');
   $reservation->setNbr_places('');
-  // $reservation->setDestinationError('true');
-  // $reservation->setNbr_placesError('true');
   $reservation->setComeback('false');
   include 'views/reservation.php';
 }
@@ -84,20 +74,8 @@ elseif(isset($_POST["destination"]) && empty($_POST["destination"]) && isset($_P
   {
     $reservation->setCheckbox('');
   }
-  // if (is_numeric($reservation->getNbr_places()) && $reservation->getNbr_places() > 0 && $reservation->getNbr_places() < 10)
-  // {
-  //   $reservation->setDestination('');
-  //   $reservation->setNbr_places($_POST['nbr_places']);
-  //   $reservation->setNbr_placesError('false');
-  //   $reservation->setDestinationError('true');
-  // }
-  // else
-  // {
-  //   $reservation->setDestinationError('true');
-  //   $reservation->setNbr_placesError('true');
     $reservation->setDestination($_POST['destination']);
     $reservation->setNbr_places($_POST['nbr_places']);
-  // }
   $reservation->setComeback('false');
   include 'views/reservation.php';
 }
@@ -117,8 +95,6 @@ elseif(isset($_POST['nbr_places']) && empty($_POST['nbr_places']) && isset($_POS
   }
   $reservation->setNbr_places($_POST['nbr_places']);
   $reservation->setDestination($_POST['destination']);
-  // $reservation->setDestinationError('false');
-  // $reservation->setNbr_placesError('true');
   $reservation->setComeback('false');
   include 'views/reservation.php';
 }
@@ -134,10 +110,6 @@ elseif(isset($_POST['backtofirst']))
 {
   $reservation->setName($_POST['names']);
   $reservation->setAge($_POST['ages']);
-  // $reservation->setAgeError('false');
-  // $reservation->setNameError('false');
-  // $reservation->setDestinationError('false');
-  // $reservation->setNbr_placesError('false');
   include 'views/reservation.php';
 }
 
@@ -169,8 +141,6 @@ elseif(isset($_POST['names']) && empty($_POST['cancel']) && isset($_POST['valida
 
   else
   {
-    // $reservation->setAgeError('true');
-    // $reservation->setNameError('true');
     $reservation->setComeback('false');
     include 'views/details.php';
   }
@@ -179,8 +149,6 @@ elseif(isset($_POST['names']) && $_POST['names']!=[] && isset($_POST["ages"]) &&
 {
   $reservation->setAge($_POST['ages']);
   $reservation->setName($_POST['names']);
-  // $reservation->setNameError('true');
-
   include 'views/validation.php';
 }
 

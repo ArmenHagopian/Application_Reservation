@@ -1,21 +1,13 @@
 <?php
-// echo $_SERVER['PHP_SELF'];
-$a = "<br>test2 : ".dirname($_SERVER['PHP_SELF']);
-echo $a;
-echo "je retesteteste";
+
 include_once 'models/model.php';
 include_once 'models/model_db.php';
 if (session_status() == PHP_SESSION_NONE)
 {
     session_start();
 }
-// if (isset($_SESSION['Database']))
-// {
-//   $db = $_SESSION['Database'];
-// }
 
 $db = new Database();
-
 
 $hostname = 'localhost';
 $database = 'testReservation';
@@ -25,42 +17,24 @@ $db->connect($hostname, $database, $username, $password);
 $table = 'reserva';
 $db->table($table);
 
-
-// try
-// {
-// $db = new PDO("mysql:host=$hostname;dbname=$database",$username,$password);
-// $table = 'reserva';
-// $result = $db->query('SELECT * FROM reserva');
-// $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// $sql = "DELETE FROM 'reserva' WHERE 'id' = :id_to_delete";
-// $query = $db->prepare( $sql );
-
-
-// !!!!!!!! aller chercher $nbr_rows dans le model !!!!!!!!!!!!
 $found_button = 'false';
-$nbr_rows = 10;
-for ($i = 1; $i <= 30; $i++)
+$nbr_rows = $db->nbrRows();
+echo $nbr_rows;
+for ($i = 1; $i <= $nbr_rows; $i++)
 {
     $modif = "Modify_".$i;
     $delete = "Delete_".$i;
 
     if(isset($_POST[$modif]))
     {
-      $found_button = 'true';
-      // unset($_SESSION['Reservation']);
-// var_dump($reservation);
-
+        $found_button = 'true';
         $reservation = new Reservation();
-// $_SESSION['Reservation'] = $reservation;
-        // $sql = "SELECT Id, Destination, Places, Assurance, Noms, Ages, Prix FROM reserva";
         $result = $db->selectAll();
         foreach  ($result as $row)
         {
           if ($row["Id"] == $i)
           {
               $reservation->setDestination($row["Destination"]);
-              // echo var_dump($reservation->getDestination())."<br>";
               $reservation->setNbr_places($row["Places"]);
               if ($row["Assurance"] == "OUI") {
                 $reservation->setCheckbox("checked");
@@ -78,8 +52,7 @@ for ($i = 1; $i <= 30; $i++)
         }
         $_SESSION['Reservation'] = serialize($reservation);
         $a = "true";
-$_SESSION['Modification'] = serialize($a);
-        // echo var_dump($reservation->getDestination());
+        $_SESSION['Modification'] = serialize($a);
         include 'controllers/controller.php';
     }
     elseif (isset($_POST[$delete]))
@@ -95,14 +68,5 @@ if ($found_button == 'false')
 {
     include "views/manager.php";
 }
-// }
-// catch(PDOException $e)
-// {
-//   echo $e->getMessage();//Remove or change message in production code
-// }
 
-// if (isset($db))
-// {
-//   $_SESSION['Database'] = $db;
-// }
 ?>

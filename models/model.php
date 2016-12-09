@@ -14,10 +14,6 @@ class Reservation
     $this->nbr_places = $nbr_places;
     $this->name = [];
     $this->age = [];
-    // $this->destinationerror = "false";
-    // $this->nbr_placeserror = "false";
-    // $this->name_error = "false";
-    // $this->age_error = "false";
     $this->checkbox = '';
     $this->name_errorslist = [];
     $this->age_errorslist = [];
@@ -91,40 +87,6 @@ class Reservation
   {
     $this->age = $newage;
   }
-  // public function getDestinationError()
-  // {
-  //   return $this->destinationerror;
-  // }
-  // public function setDestinationError($error)
-  // {
-  //   $this->destinationerror = $error;
-  // }
-  // public function getNbr_placesError()
-  // {
-  //   return $this->nbr_placeserror;
-  // }
-  // public function setNbr_placesError($error)
-  // {
-  //   $this->nbr_placeserror = $error;
-  // }
-  //
-  // public function getNameError()
-  // {
-  //   return $this->name_error;
-  // }
-  // public function setNameError($error)
-  // {
-  //   $this->name_error = $error;
-  // }
-  //
-  // public function getAgeError()
-  // {
-  //   return $this->age_error;
-  // }
-  // public function setAgeError($error)
-  // {
-  //   $this->age_error = $error;
-  // }
   public function getCheckbox()
   {
     return $this->checkbox;

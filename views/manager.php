@@ -45,7 +45,6 @@ background-color: #dddddd;
 <table>
 <tr>
 <?php
-// var_dump($db->getColumns());
 
     $columns = $db->getColumns();
     foreach ($columns as $column)
