@@ -13,10 +13,11 @@ div
 
 error
 {
-  font-size: 60%;
-  color: red;
+    font-size: 60%;
+    color: red;
 }
-input[type=text], select {
+input[type=text], select
+{
     width: 120%;
     padding: 5% 7%;
     margin: 5% 0;
@@ -26,7 +27,8 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=submit]
+{
     width: 50%;
     background-color: #4099FF;
     color: white;
@@ -35,10 +37,64 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    /*box-shadow: 0 3px #999;*/
-
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover
+{
+    background-color: #3B5998;
+}
+
+#manager input[type=submit]
+{
+    width: 100%;
+    background-color: #4099FF;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#manager input[type=submit]:hover
+{
+    background-color: #3B5998;
+}
+
+#manager table
+{
+    border: 1px solid black;
+    border-collapse: separate;
+    border-radius: 5px;
+    border-spacing: 0px;
+    font-family: arial, sans-serif;
+}
+
+#manager td, #manager th
+{
+    border: 0.5px solid black;
+    text-align: middle;
+    padding: 3px;
+}
+
+#manager tr:nth-child(even)
+{
+    background-color: #dddddd;
+}
+
+#AddButton input[type=submit]
+{
+    width: 50%;
+    background-color: #4099FF;
+    color: white;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#AddButton input[type=submit]:hover
+{
     background-color: #3B5998;
 }
