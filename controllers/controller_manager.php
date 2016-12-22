@@ -25,8 +25,6 @@ $found_button = 'false';
 
 if (!empty($_POST['AddReservation']))
 {
-    // $add_reservation = "true";
-    // $_SESSION['AddReservation'] = serialize($add_reservation);
     $found_button == 'true';
     // Open a new form
     header('location:index.php');
@@ -64,7 +62,6 @@ for ($id = 1; $id <= $nbr_rows; $id++)
                    $reservation->setName(explode(",", $row["Noms"]));
                    $reservation->setAge(explode(",", $row["Ages"]));
                    $reservation->setId($row["Id"]);
-                  //  $reservation->setComeback('false');
               }
           }
           $_SESSION['Reservation'] = serialize($reservation);

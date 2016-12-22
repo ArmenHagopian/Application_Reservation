@@ -14,6 +14,8 @@
           <?php
               $nameerror = $reservation->getNameErrors();
               $ageerror = $reservation->getAgeErrors();
+              // Number of inputs depends on the number of places
+              // Display errors and inputs
               for($i = 0; $i < $reservation->getNbr_places(); $i++)
               {
                   echo "<br>

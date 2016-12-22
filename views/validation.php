@@ -10,6 +10,7 @@
         <h1>Validation des reservations</h1>
         <progress id="avancement" value="66" max="100"></progress>
         <form method='Post' action='index.php'>
+          <!-- Display all information about the reservation -->
           <table>
             <tr>
               <td>Destination</td>

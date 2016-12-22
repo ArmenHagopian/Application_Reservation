@@ -17,6 +17,7 @@
             <?php
 
                   $columns = $db->getColumns();
+                  // Display the name of each column of the database
                   foreach ($columns as $column)
                   {
                       echo "<th>".$column."</th>";
@@ -27,6 +28,7 @@
                   <th></th>
                   ";
                   $rows = $db->getRows();
+                  // Select each column of the row which contains information about the reservation
                   foreach ($rows as $row)
                   {
                        echo "
@@ -35,6 +37,7 @@
                        {
                             echo"<td>".$row[$column]."</td>";
                        }
+                       // Each button has the Id of the reservation it is related to in the name
                        echo "
                          <td><input type='submit' name='Modify_".$row['Id']."' value='Modifier'/></td>
                          <td><input type='submit' name='Delete_".$row['Id']."' value='Supprimer'/></td>

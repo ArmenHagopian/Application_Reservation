@@ -9,6 +9,7 @@
       <div>
         <h1>Confirmation des reservations</h1>
         <progress id="avancement" value="100" max="100"></progress>
+          <!-- The price is brought from $reservation -->
           <br>Votre demande a bien été enregistrée.<br>Merci de bien
           vouloir verser la somme de <?php if (isset($reservation))
           echo $reservation->getPrice() ?> euros sur le compte 000-000000-00

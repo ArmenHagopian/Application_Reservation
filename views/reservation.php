@@ -17,6 +17,7 @@
               <table>
                   <tr>
                     <td>Destination<br>
+                      <!-- Display an error for Destination input -->
                       <?php if (isset($reservation))
                       echo "<error>".$reservation->getDestinationError()."</error>"?>
                     </td>
@@ -28,6 +29,7 @@
                   </tr>
                   <tr>
                     <td>Nombre de places<br>
+                      <!-- Display an error for nbr_places input -->
                       <?php if (isset($reservation))
                       echo '<error>'.$reservation->getNbr_placesError().'</error>'?>
                     </td>
