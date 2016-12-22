@@ -14,7 +14,7 @@
           <?php
               $nameerror = $reservation->getNameErrors();
               $ageerror = $reservation->getAgeErrors();
-              for($i=0; $i < $reservation->getNbr_places(); $i++)
+              for($i = 0; $i < $reservation->getNbr_places(); $i++)
               {
                   echo "<br>
                   <table>
